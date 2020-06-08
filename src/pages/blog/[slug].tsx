@@ -82,7 +82,20 @@ const RenderPost = ({ post, redirect }) => {
 
         <Content blocks={post.content || []}/>
 
-        <div id="disqus_thread" style={{ marginBottom: 100 }} />
+        <div id="disqus_thread" style={{ marginBottom: 80 }} />
+        <style jsx global>{`
+          #disqus_thread {
+            overflow: hidden;
+          }
+          #disqus_thread iframe {
+            margin: -42px 0;
+          }
+          @media screen and (max-width: 512px) {
+            #disqus_thread iframe {
+              margin-bottom: -52px;
+            }
+          }
+        `}</style>
       </article>
     </>
   )
