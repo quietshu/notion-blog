@@ -66,6 +66,15 @@ const RenderPost = ({ post, redirect }) => {
         </Header>
 
         <Content blocks={post.content || []}/>
+
+        <div id="commento" />
+        <script
+          defer
+          async
+          src="https://cdn.commento.io/js/commento.js"
+          data-css-override="/comment.css"
+          data-no-fonts="true"
+        />
       </article>
     </>
   )
