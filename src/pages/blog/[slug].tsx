@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Head from 'next/head'
 
 import Header from '../../components/header'
@@ -45,21 +45,6 @@ export async function unstable_getStaticPaths() {
 }
 
 const RenderPost = ({ post, redirect }) => {
-  useEffect(() => {
-    try {
-      if (window['DISQUS']) {
-        window['DISQUS'].host._loadEmbed()
-      } else {
-        const d = document, s = d.createElement('script')
-        s.src = 'https://shuding.disqus.com/embed.js'
-        s.setAttribute('data-timestamp', '' + Date.now())
-        ;(d.head || d.body).appendChild(s)
-      }
-    } catch (err) {
-      // ignore
-    }
-  }, [])
-
   if (redirect) {
     return (
       <>
@@ -81,21 +66,6 @@ const RenderPost = ({ post, redirect }) => {
         </Header>
 
         <Content blocks={post.content || []}/>
-
-        <div id="disqus_thread" style={{ marginBottom: 80 }} />
-        <style jsx global>{`
-          #disqus_thread {
-            overflow: hidden;
-          }
-          #disqus_thread iframe {
-            margin: -42px 0;
-          }
-          @media screen and (max-width: 512px) {
-            #disqus_thread iframe {
-              margin-bottom: -52px;
-            }
-          }
-        `}</style>
       </article>
     </>
   )
