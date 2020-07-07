@@ -9,7 +9,7 @@ import getBlogIndex from '../../lib/notion/getBlogIndex'
 import { getBlogLink, getDateStr } from '../../lib/blog-helpers'
 
 // Get the data for each blog post
-export async function unstable_getStaticProps({ params: { slug } }) {
+export async function getStaticProps({ params: { slug } }) {
   // load the postsTable so that we can get the page's ID
   const postsTable = await getBlogIndex()
   const post = postsTable[slug]
@@ -20,7 +20,7 @@ export async function unstable_getStaticProps({ params: { slug } }) {
       props: {
         redirect: '/blog',
       },
-      revalidate: 5,
+      unstable_revalidate: 5,
     }
   }
   const postData = await getPageData(post.id)
@@ -34,12 +34,12 @@ export async function unstable_getStaticProps({ params: { slug } }) {
     props: {
       post,
     },
-    revalidate: 10,
+    unstable_revalidate: 10,
   }
 }
 
 // Return our list of blog posts to prerender
-export async function unstable_getStaticPaths() {
+export async function getStaticPaths() {
   const postsTable = await getBlogIndex()
   return Object.keys(postsTable).map(slug => getBlogLink(slug))
 }
@@ -62,10 +62,12 @@ const RenderPost = ({ post, redirect }) => {
         <h1>{post.Page || ''}</h1>
 
         <Header title={post.Page}>
-          <div className="meta">{post.Authors.join(' ')}, {getDateStr(post.Date)}</div>
+          <div className="meta">
+            {post.Authors.join(' ')}, {getDateStr(post.Date)}
+          </div>
         </Header>
 
-        <Content blocks={post.content || []}/>
+        <Content blocks={post.content || []} />
       </article>
     </>
   )

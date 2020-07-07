@@ -7,7 +7,7 @@ import { BLOG_INDEX_ID } from '../lib/notion/server-constants'
 
 import getPageData from '../lib/notion/getPageData'
 
-export async function unstable_getStaticProps() {
+export async function getStaticProps() {
   const postData = await getPageData(BLOG_INDEX_ID, 2)
   const post = { content: postData.blocks }
 
@@ -15,7 +15,7 @@ export async function unstable_getStaticProps() {
     props: {
       post,
     },
-    revalidate: 10,
+    unstable_revalidate: 10,
   }
 }
 
@@ -24,7 +24,7 @@ export default ({ post }) => {
     <article>
       <h1>Shu Ding</h1>
       <Header title="Shu Ding" />
-      <Content blocks={post.content || []}/>
+      <Content blocks={post.content || []} />
     </article>
   )
 }

@@ -6,7 +6,7 @@ import { textBlock } from '../../lib/notion/renderers'
 import getNotionUsers from '../../lib/notion/getNotionUsers'
 import getBlogIndex from '../../lib/notion/getBlogIndex'
 
-export async function unstable_getStaticProps() {
+export async function getStaticProps() {
   const postsTable = await getBlogIndex()
 
   const authorsToGet: Set<string> = new Set()
@@ -35,7 +35,7 @@ export async function unstable_getStaticProps() {
     props: {
       posts,
     },
-    revalidate: 10,
+    unstable_revalidate: 10,
   }
 }
 
