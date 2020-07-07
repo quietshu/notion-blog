@@ -41,7 +41,12 @@ export async function getStaticProps({ params: { slug } }) {
 // Return our list of blog posts to prerender
 export async function getStaticPaths() {
   const postsTable = await getBlogIndex()
-  return Object.keys(postsTable).map(slug => getBlogLink(slug))
+  return {
+    paths: Object.keys(postsTable)
+      .filter(post => postsTable[post].Published === 'Yes')
+      .map(slug => getBlogLink(slug)),
+    fallback: true,
+  }
 }
 
 const RenderPost = ({ post, redirect }) => {

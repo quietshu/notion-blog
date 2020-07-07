@@ -2,21 +2,10 @@ import { Sema } from 'async-sema'
 import rpc, { values } from './rpc'
 import getTableData from './getTableData'
 import { getPostPreview } from './getPostPreview'
-import { readFile, writeFile } from '../fs-helpers'
-import { BLOG_INDEX_ID, BLOG_INDEX_CACHE } from './server-constants'
+import { BLOG_INDEX_ID } from './server-constants'
 
 export default async function getBlogIndex(previews = true) {
   let postsTable: any = null
-  const isProd = process.env.NODE_ENV === 'production'
-  const cacheFile = `${BLOG_INDEX_CACHE}${previews ? '_previews' : ''}`
-
-  if (isProd) {
-    try {
-      postsTable = JSON.parse(await readFile(cacheFile, 'utf8'))
-    } catch (_) {
-      /* not fatal */
-    }
-  }
 
   if (!postsTable) {
     try {
@@ -66,10 +55,6 @@ export default async function getBlogIndex(previews = true) {
             sema.release()
           })
       )
-    }
-
-    if (isProd) {
-      writeFile(cacheFile, JSON.stringify(postsTable), 'utf8').catch(() => {})
     }
   }
 
