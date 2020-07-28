@@ -18,6 +18,6 @@
         "Location": "/blog/$1"
       }
     },
-    { "src": "/(y86|labs|dogesite|cssosx|apple-pencil-safari-api-test|cube|introToGoogle|fdu-hci-2016|css-computer)(/.+)?", "dest": "https://quietshu.github.io/$1$2" }
+    { "src": "/(y86|labs|dogesite|cssosx|apple-pencil-safari-api-test|yo|cube|introToGoogle|fdu-hci-2016|css-computer)(/.+)?", "dest": "https://quietshu.github.io/$1$2" }
   ]
 }
