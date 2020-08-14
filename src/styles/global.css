@@ -5,12 +5,16 @@
 }
 
 html {
-  font-family: 'Inter', 'Helvetica Neue',-apple-system,BlinkMacSystemFont,Helvetica,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Fira Sans','Droid Sans','Microsoft Yahei',sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', -apple-system, BlinkMacSystemFont,
+    Helvetica, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans',
+    'Droid Sans', 'Microsoft Yahei', sans-serif;
 }
 
 @supports (font-variation-settings: normal) {
   html {
-    font-family: 'Inter var', 'Helvetica Neue',-apple-system,BlinkMacSystemFont,Helvetica,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Fira Sans','Droid Sans','Microsoft Yahei',sans-serif;
+    font-family: 'Inter var', 'Helvetica Neue', -apple-system,
+      BlinkMacSystemFont, Helvetica, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+      Cantarell, 'Fira Sans', 'Droid Sans', 'Microsoft Yahei', sans-serif;
   }
 }
 
@@ -37,9 +41,10 @@ body {
   background: #103cff;
 }
 
-a:focus, article a:focus {
+a:focus,
+article a:focus {
   outline: none;
-  opacity: .6;
+  opacity: 0.6;
 }
 
 article {
@@ -88,7 +93,8 @@ article blockquote {
 
 blockquote .zh-han {
   font-style: normal;
-  font-family: Baskerville, 'Times New Roman', Times, 'Zhuyin Kaiti', 'Han Kaiti', Kai, KaiTi, 'KaiTi SC', STKaiti, cursive;
+  font-family: Baskerville, 'Times New Roman', Times, 'Zhuyin Kaiti',
+    'Han Kaiti', Kai, KaiTi, 'KaiTi SC', STKaiti, cursive;
   font-size: 1.04em;
 }
 
@@ -101,11 +107,11 @@ article hr {
 }
 
 article li {
-  margin: .25rem 0;
+  margin: 0.25rem 0;
 }
 
 article li::marker {
-  font-feature-settings: "tnum";
+  font-feature-settings: 'tnum';
 }
 
 article b {
@@ -117,7 +123,9 @@ article a {
   text-decoration: none;
 }
 
-article p a:hover, article li a:hover, article blockquote a:hover {
+article p a:hover,
+article li a:hover,
+article blockquote a:hover {
   text-decoration: underline;
   text-underline-position: auto;
   cursor: pointer;
@@ -131,6 +139,13 @@ article .zh-han {
 
 article .meta {
   color: #666;
+}
+
+article code,
+article pre {
+  font-family: menlo, monaco, monospace;
+  font-size: 0.98em;
+  color: #555;
 }
 
 .post-list {
@@ -155,7 +170,7 @@ article .meta {
 
 .post-item time {
   color: #666;
-  font-size: .8rem;
+  font-size: 0.8rem;
   line-height: 2em;
 }
 
@@ -166,7 +181,8 @@ article .meta {
   margin: 1.5rem 0;
 }
 
-.media-container img, .media-container video {
+.media-container img,
+.media-container video {
   position: absolute;
   width: 100%;
 }
@@ -201,7 +217,7 @@ footer {
   max-width: 42rem;
   padding: 0 1rem;
   margin: 0 auto 2rem;
-  font-size: .8rem;
+  font-size: 0.8rem;
   color: #aaa;
   line-height: 1.2em;
 }
